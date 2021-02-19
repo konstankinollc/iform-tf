@@ -45,7 +45,7 @@ variable "IFORM_TYPE" {
 variable "IFORM_AMI" {
   type = map(any)
   default = {
-    us-east-1 = "ami-06f60bef7e99f2372" # iForm General Availability v1.3
+    us-east-1 = "ami-0583a85f64c86b59a" # iForm GA Version 1.2
   }
 }
 variable "DATALAKE_MOUNT_POINT" {
