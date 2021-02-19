@@ -1,4 +1,5 @@
-# iform-tf
+# iForm.io-TF - General Availability Infrastructure Template
 
-iForm Terraform infrastructure template. This is NOT a production workload yet. Please check back later. Thank you.
+iForm Terraform infrastructure template. Please follow installation instructions located at https://iform.io/install/aws-marketplace.html
 
+Thank you
