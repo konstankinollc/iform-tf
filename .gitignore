@@ -1,0 +1,9 @@
+terraform.tfstate
+terraform.out
+ssh-key*
+.terraform
+.DS_Store
+.terraform.lock.hcl
+*.log
+terraform.tfstate.backup
+
