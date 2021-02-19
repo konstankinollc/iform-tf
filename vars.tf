@@ -59,17 +59,17 @@ variable "CERTIFICATE_ARN" {
 }
 # TODO: replace with your host
 variable "APP_HOST" {
-  type = string
+  type        = string
   description = "Your domain, e.g. iform.io"
 }
 # TODO: replace with your subdomain
 variable "SUBDOMAIN" {
-  type = string
+  type        = string
   description = "Your desired subdomain, e.g. demo"
 }
 variable "SPP_LOG_FILE" {
-  type = string
-  default = "/srv/iform/app/shared/log/spp-app.log"
+  type        = string
+  default     = "/srv/iform/app/shared/log/spp-app.log"
   description = "Your desired location for application log file"
 }
 
@@ -119,7 +119,7 @@ variable "SMTP_USERNAME" {
 }
 # Application specific secrets BEGIN
 variable "DEVISE_SECRET_KEY" {
-  type    = string
+  type        = string
   description = "Enter random letters, numbers and at least a few special characters, such as !@#$%^&*() (min length 10 chars.)"
 }
 # pupulate in CLI
@@ -148,12 +148,12 @@ variable "DATABASE_INSTANCE" {
   }
 }
 variable "RDS_CA_2019_LOCATION" {
-  default = "https://s3.amazonaws.com/rds-downloads/rds-ca-2019-root.pem"
+  default     = "https://s3.amazonaws.com/rds-downloads/rds-ca-2019-root.pem"
   description = "From where CA file will be downloaded."
 }
 variable "LOCAL_CA_2019_LOCATION" {
   description = "Where CA file will be stored."
-  default = "/srv/iform/app/shared/rds-ca-2019-root.pem"
+  default     = "/srv/iform/app/shared/rds-ca-2019-root.pem"
 }
 
 variable "DB_PORT" {
@@ -166,7 +166,7 @@ variable "DB_USERNAME" {
   default = "iFormDBUser"
 }
 variable "DB_PASSWORD" {
-  type = string
+  type        = string
   description = "Enter your Database desired password. Please use numbers and at least a few special characters, such as !@#$%^&*() (min length 8 chars.)"
 }
 
