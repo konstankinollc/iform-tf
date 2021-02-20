@@ -120,17 +120,17 @@ variable "SMTP_USERNAME" {
 # Application specific secrets BEGIN
 variable "DEVISE_SECRET_KEY" {
   type        = string
-  description = "Enter random letters, numbers and at least a few special characters, such as !@#$%^&*() (min length 10 chars.)"
+  description = "Enter random letters and numbers ONLY (min length 10 chars.)"
 }
 # pupulate in CLI
 variable "SECRET_TOKEN" {
   type        = string
-  description = "Enter random letters, numbers and at least a few special characters, such as !@#$%^&*() (min length 10 chars.)"
+  description = "Enter random letters and numbers ONLY ( (min length 10 chars.)"
 }
 # pupulate in CLI
 variable "SECRET_KEY_BASE" {
   type        = string
-  description = "Enter random letters, numbers and at least a few special characters, such as !@#$%^&*() (min length 25 chars.)"
+  description = "Enter random letters and numbers ONLY (min length 25 chars.)"
 }
 # Application specific secrets END
 
@@ -160,14 +160,16 @@ variable "DB_PORT" {
   default = 5432
 }
 variable "DB_NAME" {
-  default = "iformdatabase"
+  type    = string
+  description = "Enter your Database desired name"
 }
 variable "DB_USERNAME" {
-  default = "iFormDBUser"
+  type    = string
+  description = "Enter your Database desired username"
 }
 variable "DB_PASSWORD" {
   type        = string
-  description = "Enter your Database desired password. Please use numbers and at least a few special characters, such as !@#$%^&*() (min length 8 chars.)"
+  description = "Enter your Database desired password. Must start with number or letter character. Recommendation is to use at least one special character, such as !@#$%^&*() (min length 8 chars.)"
 }
 
 # Ignore this. Not used at the moment

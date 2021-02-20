@@ -1,6 +1,8 @@
 #!/bin/bash -xe
 exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 
+mkdir -p /var/log/nginx/
+
 rm -fr /srv/iform/app/*
 
 # provision app code
@@ -104,4 +106,5 @@ export PATH=/home/ec2-user/.rbenv/shims:/home/ec2-user/.rbenv/bin:/sbin:/bin:/us
 RAILS_ENV=production bundle exec rake db:migrate
 RAILS_ENV=production bundle exec rails r /tmp/script.rb
 
+systemctl restart nginx
 systemctl restart puma
