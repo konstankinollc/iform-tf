@@ -92,7 +92,7 @@ variable "SCHOOL_TITLE" {
 }
 variable "SCHOOL_PHONE" {
   type        = string
-  description = "Main Phone # that the school staff can be reached at, e.g. (206) 345-6789"
+  description = "Main Phone # that the school staff can be reached at, e.g. 206-345-6789. Phone number MUST BE in XXX-XXX-XXXX format."
 }
 # pupulate in CLI
 variable "SCHOOL_SECRET_PHRASE" {
