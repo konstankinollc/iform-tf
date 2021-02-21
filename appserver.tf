@@ -67,6 +67,9 @@ resource "aws_iam_role_policy_attachment" "appserver-policy-role-attachment" {
   policy_arn = aws_iam_policy.cwagent.arn
 }
 
+resource "aws_kms_key" "this" {
+}
+
 resource "aws_instance" "app" {
 
   ami           = lookup(var.IFORM_AMI, var.AWS_REGION)
@@ -76,6 +79,22 @@ resource "aws_instance" "app" {
     aws_efs_file_system.datalake,
     aws_db_instance.main
   ]
+
+  root_block_device {
+    volume_type = "gp2"
+    volume_size = 20
+    encrypted   = true
+    kms_key_id  = aws_kms_key.this.arn
+  }
+
+  ebs_block_device {
+    delete_on_termination = false
+    device_name           = "/dev/sdf"
+    volume_type           = "gp2"
+    volume_size           = 25
+    encrypted             = true
+    kms_key_id            = aws_kms_key.this.arn
+  }
 
   iam_instance_profile = aws_iam_instance_profile.default.name
 
