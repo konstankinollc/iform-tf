@@ -160,11 +160,11 @@ variable "DB_PORT" {
   default = 5432
 }
 variable "DB_NAME" {
-  type    = string
+  type        = string
   description = "Enter your Database desired name"
 }
 variable "DB_USERNAME" {
-  type    = string
+  type        = string
   description = "Enter your Database desired username"
 }
 variable "DB_PASSWORD" {

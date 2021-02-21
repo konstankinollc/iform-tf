@@ -79,7 +79,7 @@ resource "aws_instance" "app" {
 
   iam_instance_profile = aws_iam_instance_profile.default.name
 
-  user_data = templatefile("user-data/provision.sh", {
+  user_data = templatefile("user-data/app-server.sh", {
 
     rds_endpoint = trimsuffix(aws_db_instance.main.endpoint, ":${aws_db_instance.main.port}")
     rds_username = aws_db_instance.main.username

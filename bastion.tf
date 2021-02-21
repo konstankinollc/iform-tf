@@ -3,6 +3,8 @@ resource "aws_instance" "bastion" {
   ami           = lookup(var.BASTION_AMI, var.AWS_REGION)
   instance_type = var.BASTION_TYPE
 
+  user_data = file("user-data/bastion-server.sh")
+
   # VPC
   subnet_id = aws_subnet.prod-subnet-public.id
 
