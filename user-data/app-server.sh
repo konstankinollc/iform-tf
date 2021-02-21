@@ -94,6 +94,31 @@ cat <<EOF >/opt/aws/amazon-cloudwatch-agent/bin/config.json
                          "file_path": "${puma_error_log_file}",
                          "log_group_name": "iForm-Puma-Error-Logs",
                          "log_stream_name": "{instance_id}"
+                     },
+                     {
+                         "file_path": "/var/log/nginx/error.log",
+                         "log_group_name": "iForm-Nginx-Error-Logs",
+                         "log_stream_name": "{instance_id}"
+                     },
+                     {
+                         "file_path": "/var/log/nginx/access.log",
+                         "log_group_name": "iForm-Nginx-Access-Logs",
+                         "log_stream_name": "{instance_id}"
+                     },
+                     {
+                         "file_path": "/var/log/user-data.log",
+                         "log_group_name": "iForm-User-Data-Logs",
+                         "log_stream_name": "{instance_id}"
+                     },
+                     {
+                         "file_path": "/var/log/messages",
+                         "log_group_name": "iForm-System-Messages-Logs",
+                         "log_stream_name": "{instance_id}"
+                     },
+                     {
+                         "file_path": "/var/log/yum.log",
+                         "log_group_name": "iForm-Yum-Logs",
+                         "log_stream_name": "{instance_id}"
                      }
                  ]
              }

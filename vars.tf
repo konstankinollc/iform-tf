@@ -142,7 +142,7 @@ variable "DATABASE_INSTANCE" {
     "rds_ca"                    = "rds-ca-2019"
     "final_snapshot_identifier" = "iform-final-snapshot"
 
-    "backup_retention_period"  = 10
+    "backup_retention_period"  = 0     # set to desired value in production (>=7)
     "multi_az"                 = false # set to true in production
     "deletion_protection"      = false # set to true in production
     "delete_automated_backups" = true  # set to false in production
@@ -163,15 +163,15 @@ variable "DB_PORT" {
 }
 variable "DB_NAME" {
   type        = string
-  description = "Enter your Database desired name"
+  description = "Your Database desired name"
 }
 variable "DB_USERNAME" {
   type        = string
-  description = "Enter your Database desired username"
+  description = "Your Database desired username"
 }
 variable "DB_PASSWORD" {
   type        = string
-  description = "The RDS MasterUserPassword must be at least 8 characters long"
+  description = "Your RDS MasterUserPassword must be at least 8 characters long"
 }
 
 # Ignore this. Not used at the moment
