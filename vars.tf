@@ -52,17 +52,14 @@ variable "DATALAKE_MOUNT_POINT" {
   default = "/mnt/efs"
 }
 
-# TODO: replace with your Amazon Certificate Manager Cert ARN
 variable "CERTIFICATE_ARN" {
   type        = string
   description = "Your Amazon Certificate Manager SSL Certificate ARN"
 }
-# TODO: replace with your host
 variable "APP_HOST" {
   type        = string
   description = "Your domain, e.g. iform.io"
 }
-# TODO: replace with your subdomain
 variable "SUBDOMAIN" {
   type        = string
   description = "Your desired subdomain, e.g. demo"
@@ -73,15 +70,12 @@ variable "SPP_LOG_FILE" {
   description = "Your desired location for application log file"
 }
 
-# TODO: replace from_email according to your SES configuration
 # NOTE: this is an admin username/email address that will be used to log in into the iForm Portal
-# pupulate in CLI
 variable "FROM_EMAIL" {
   type        = string
   description = "An admin email address that will be used to log in into the iForm Portal"
 }
 # NOTE: this is an admin password that will be used to log in into the portal
-# pupulate in CLI
 variable "ADMIN_PASSWORD" {
   type        = string
   description = "An admin password that will be used to log in into the iForm Portal"
@@ -94,7 +88,6 @@ variable "SCHOOL_PHONE" {
   type        = string
   description = "Main Phone # that the school staff can be reached at, e.g. 206-345-6789. Phone number MUST BE in XXX-XXX-XXXX format."
 }
-# pupulate in CLI
 variable "SCHOOL_SECRET_PHRASE" {
   type        = string
   description = "Enter a secret phrase or a word (can be any word you choose)"
@@ -107,27 +100,23 @@ variable "SMTP" {
     "port"    = 587
   }
 }
-# pupulate in CLI
+# Application specific secrets BEGIN
 variable "SMTP_PASSWORD" {
   type        = string
   description = "Your SMTP Password"
 }
-# pupulate in CLI
 variable "SMTP_USERNAME" {
   type        = string
   description = "Your SMTP Username"
 }
-# Application specific secrets BEGIN
 variable "DEVISE_SECRET_KEY" {
   type        = string
   description = "Enter random letters and numbers ONLY (min length 10 chars.)"
 }
-# pupulate in CLI
 variable "SECRET_TOKEN" {
   type        = string
   description = "Enter random letters and numbers ONLY ( (min length 10 chars.)"
 }
-# pupulate in CLI
 variable "SECRET_KEY_BASE" {
   type        = string
   description = "Enter random letters and numbers ONLY (min length 25 chars.)"

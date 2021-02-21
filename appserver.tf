@@ -82,7 +82,7 @@ resource "aws_instance" "app" {
 
   root_block_device {
     volume_type = "gp2"
-    volume_size = 20
+    volume_size = 25
     encrypted   = true
     kms_key_id  = aws_kms_key.this.arn
   }
