@@ -106,10 +106,12 @@ resource "aws_instance" "app" {
     rds_password = aws_db_instance.main.password
     rds_database = aws_db_instance.main.name
 
-    app_host     = format("%s.%s", var.SUBDOMAIN, var.APP_HOST)
-    spp_log_file = var.SPP_LOG_FILE
-    smtp_address = lookup(var.SMTP, "address")
-    smtp_port    = lookup(var.SMTP, "port")
+    app_host             = format("%s.%s", var.SUBDOMAIN, var.APP_HOST)
+    spp_log_file         = var.SPP_LOG_FILE
+    puma_access_log_file = var.PUMA_ACCESS_LOG_FILE
+    puma_error_log_file  = var.PUMA_ERROR_LOG_FILE
+    smtp_address         = lookup(var.SMTP, "address")
+    smtp_port            = lookup(var.SMTP, "port")
 
     smtp_password = var.SMTP_PASSWORD
     smtp_username = var.SMTP_USERNAME

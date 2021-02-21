@@ -84,6 +84,16 @@ cat <<EOF >/opt/aws/amazon-cloudwatch-agent/bin/config.json
                          "file_path": "${spp_log_file}",
                          "log_group_name": "iForm-Application-Logs",
                          "log_stream_name": "{instance_id}"
+                     },
+                     {
+                         "file_path": "${puma_access_log_file}",
+                         "log_group_name": "iForm-Puma-Access-Logs",
+                         "log_stream_name": "{instance_id}"
+                     },
+                     {
+                         "file_path": "${puma_error_log_file}",
+                         "log_group_name": "iForm-Puma-Error-Logs",
+                         "log_stream_name": "{instance_id}"
                      }
                  ]
              }

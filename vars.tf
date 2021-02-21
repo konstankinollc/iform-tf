@@ -65,9 +65,16 @@ variable "SUBDOMAIN" {
   description = "Your desired subdomain, e.g. demo"
 }
 variable "SPP_LOG_FILE" {
-  type        = string
-  default     = "/srv/iform/app/shared/log/spp-app.log"
-  description = "Your desired location for application log file"
+  type    = string
+  default = "/srv/iform/app/shared/log/spp-app.log"
+}
+variable "PUMA_ERROR_LOG_FILE" {
+  type    = string
+  default = "/srv/iform/app/shared/log/puma.stdout.log"
+}
+variable "PUMA_ACCESS_LOG_FILE" {
+  type    = string
+  default = "/srv/iform/app/shared/log/puma.stdout.log"
 }
 
 # NOTE: this is an admin username/email address that will be used to log in into the iForm Portal
