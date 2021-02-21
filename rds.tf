@@ -31,38 +31,29 @@ resource "aws_db_instance" "main" {
   password = var.DB_PASSWORD
   port     = var.DB_PORT
 
-  availability_zone   = "${var.AWS_REGION}a"
-  multi_az            = false
-  iops                = 0
-  publicly_accessible = false
+  availability_zone = "${var.AWS_REGION}a"
+  multi_az          = lookup(var.DATABASE_INSTANCE, "multi_az")
 
+  publicly_accessible         = false
   allow_major_version_upgrade = false
   auto_minor_version_upgrade  = true
   apply_immediately           = true
+  copy_tags_to_snapshot       = true
 
-  # enable this in production
-  skip_final_snapshot = true
-  # disable backups to create DB faster
-  backup_retention_period = 0
-
-  copy_tags_to_snapshot     = true
+  delete_automated_backups  = lookup(var.DATABASE_INSTANCE, "delete_automated_backups")
+  deletion_protection       = lookup(var.DATABASE_INSTANCE, "deletion_protection")
+  skip_final_snapshot       = lookup(var.DATABASE_INSTANCE, "skip_final_snapshot")
+  backup_retention_period   = lookup(var.DATABASE_INSTANCE, "backup_retention_period")
   final_snapshot_identifier = lookup(var.DATABASE_INSTANCE, "final_snapshot_identifier")
   max_allocated_storage     = lookup(var.DATABASE_INSTANCE, "max_storage")
-
-  ca_cert_identifier = lookup(var.DATABASE_INSTANCE, "rds_ca")
+  ca_cert_identifier        = lookup(var.DATABASE_INSTANCE, "rds_ca")
 
   enabled_cloudwatch_logs_exports = ["postgresql", "upgrade"]
-
-  # enable this in production
-  deletion_protection = false
-
-  delete_automated_backups = true
-
-  maintenance_window = "Mon:00:00-Mon:03:00"
-  backup_window      = "03:00-06:00"
+  maintenance_window              = "Mon:00:00-Mon:03:00"
+  backup_window                   = "03:00-06:00"
 
   tags = {
-    "Name" = "iForm Postgres Database"
+    "Name" = "iForm App Main"
   }
 
   timeouts {
@@ -72,6 +63,6 @@ resource "aws_db_instance" "main" {
   }
 }
 
-output "rds_host_endpoint" {
-  value = aws_db_instance.main.endpoint
-}
+# output "rds_host_endpoint" {
+#   value = aws_db_instance.main.endpoint
+# }

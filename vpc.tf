@@ -85,6 +85,6 @@ resource "aws_nat_gateway" "nat" {
   subnet_id     = aws_subnet.prod-subnet-public.id
 }
 
-output "nat_gateway_ip" {
-  value = aws_eip.nat.public_ip
-}
+# output "nat_gateway_ip" {
+#   value = aws_eip.nat.public_ip
+# }

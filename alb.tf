@@ -9,9 +9,10 @@ resource "aws_lb" "iform" {
     aws_subnet.prod-subnet-public-2.id
   ]
 
-  # change this to true
   enable_deletion_protection = false
 
+  # TODO: store access logs at some point
+  #
   #   access_logs {
   #     bucket  = aws_s3_bucket.lb_logs.bucket
   #     prefix  = "test-lb"
@@ -70,6 +71,6 @@ resource "aws_alb_listener" "http" {
   }
 }
 
-output "loadbalancer" {
-  value = aws_lb.iform.dns_name
-}
+# output "loadbalancer" {
+#   value = aws_lb.iform.dns_name
+# }

@@ -47,6 +47,6 @@ resource "aws_security_group" "datalake" {
   }
 }
 
-output "datalake" {
-  value = aws_efs_file_system.datalake.dns_name
-}
+# output "datalake" {
+#   value = aws_efs_file_system.datalake.dns_name
+# }

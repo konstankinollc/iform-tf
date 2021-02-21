@@ -134,6 +134,12 @@ variable "DATABASE_INSTANCE" {
     "max_storage"               = 100
     "rds_ca"                    = "rds-ca-2019"
     "final_snapshot_identifier" = "iform-final-snapshot"
+
+    "backup_retention_period"  = 10
+    "multi_az"                 = false # set to true in production
+    "deletion_protection"      = false # set to true in production
+    "delete_automated_backups" = true  # set to false in production
+    "skip_final_snapshot"      = true  # set to false in production
   }
 }
 variable "RDS_CA_2019_LOCATION" {
