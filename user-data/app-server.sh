@@ -63,6 +63,7 @@ unless Company.all.any?
   admin = Admin.create!(first_name: "Admin", last_name: "User", email: "${from_email}", password: "${admin_password}", password_confirmation: "${admin_password}")
   school.generate_config!
   admin.companies << school
+  admin.send_reset_password_instructions
 end
 
 EOF

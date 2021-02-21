@@ -70,6 +70,44 @@ resource "aws_iam_role_policy_attachment" "appserver-policy-role-attachment" {
 resource "aws_kms_key" "this" {
 }
 
+resource "random_password" "admin_user" {
+  length           = 16
+  special          = true
+  override_special = "*+-./=?[]^_"
+}
+
+resource "random_password" "devise_secret_key" {
+  length           = 128
+  special          = true
+  override_special = "*+-./=?[]^_"
+  upper            = true
+  lower            = true
+}
+
+resource "random_password" "secret_key_base" {
+  length           = 128
+  special          = true
+  override_special = "*+-./=?[]^_"
+  upper            = true
+  lower            = true
+}
+
+resource "random_password" "stripe_key" {
+  length           = 128
+  special          = true
+  override_special = "*+-./=?[]^_"
+  upper            = true
+  lower            = true
+}
+
+resource "random_password" "secret_token" {
+  length           = 128
+  special          = true
+  override_special = "*+-./=?[]^_"
+  upper            = true
+  lower            = true
+}
+
 resource "aws_instance" "app" {
 
   ami           = lookup(var.IFORM_AMI, var.AWS_REGION)
@@ -117,11 +155,11 @@ resource "aws_instance" "app" {
     smtp_username = var.SMTP_USERNAME
 
     from_email     = var.FROM_EMAIL
-    admin_password = var.ADMIN_PASSWORD
+    admin_password = random_password.admin_user.result
 
-    secret_key_base = var.SECRET_KEY_BASE
-    stripe_key      = var.STRIPE_KEY
-    secret_token    = var.SECRET_TOKEN
+    secret_key_base = random_password.secret_key_base.result
+    stripe_key      = random_password.stripe_key.result
+    secret_token    = random_password.secret_token.result
 
     efs_dns_name = aws_efs_file_system.datalake.dns_name
 
@@ -129,7 +167,7 @@ resource "aws_instance" "app" {
 
     rds_ca_2019_location   = var.RDS_CA_2019_LOCATION
     local_ca_2019_location = var.LOCAL_CA_2019_LOCATION
-    devise_secret_key      = var.DEVISE_SECRET_KEY
+    devise_secret_key      = random_password.devise_secret_key.result
 
     subdomain            = var.SUBDOMAIN
     school_title         = var.SCHOOL_TITLE

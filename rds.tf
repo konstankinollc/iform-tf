@@ -12,6 +12,22 @@ resource "aws_db_subnet_group" "private-subnet" {
   }
 }
 
+resource "random_password" "password" {
+  length           = 16
+  special          = true
+  override_special = "*+-./=?[]^_"
+}
+
+resource "random_pet" "username" {
+  length = 1
+  prefix = "iform-"
+}
+
+resource "random_pet" "database" {
+  length = 1
+  prefix = "iform-production-db-"
+}
+
 resource "aws_db_instance" "main" {
 
   depends_on = [aws_db_subnet_group.private-subnet]
@@ -26,10 +42,10 @@ resource "aws_db_instance" "main" {
   db_subnet_group_name   = aws_db_subnet_group.private-subnet.id
   vpc_security_group_ids = [aws_security_group.postgres.id]
 
-  name     = var.DB_NAME
-  username = var.DB_USERNAME
-  password = var.DB_PASSWORD
-  port     = var.DB_PORT
+  name     = random_pet.database.id
+  username = random_pet.username.id
+  password = random_password.password.result
+  port     = lookup(var.DATABASE_INSTANCE, "port")
 
   availability_zone = "${var.AWS_REGION}a"
   multi_az          = lookup(var.DATABASE_INSTANCE, "multi_az")
