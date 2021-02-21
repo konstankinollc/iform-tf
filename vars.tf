@@ -158,7 +158,7 @@ variable "DB_USERNAME" {
 }
 variable "DB_PASSWORD" {
   type        = string
-  description = "Enter your Database desired password. Must start with number or letter character. Recommendation is to use at least one special character, such as !@#$%^&*() (min length 8 chars.)"
+  description = "The RDS MasterUserPassword must be at least 8 characters long"
 }
 
 # Ignore this. Not used at the moment
