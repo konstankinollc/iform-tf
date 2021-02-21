@@ -18,14 +18,12 @@ resource "random_password" "password" {
   override_special = "*+-./=?[]^_"
 }
 
-resource "random_pet" "username" {
-  length = 1
-  prefix = "iform-"
+resource "random_id" "username" {
+  byte_length = 8
 }
 
-resource "random_pet" "database" {
-  length = 1
-  prefix = "iform-production-db-"
+resource "random_id" "database" {
+  byte_length = 8
 }
 
 resource "aws_db_instance" "main" {
@@ -42,8 +40,8 @@ resource "aws_db_instance" "main" {
   db_subnet_group_name   = aws_db_subnet_group.private-subnet.id
   vpc_security_group_ids = [aws_security_group.postgres.id]
 
-  name     = random_pet.database.id
-  username = random_pet.username.id
+  name     = "iFormProduction${random_id.database.hex}"
+  username = "iForm${random_id.username.hex}"
   password = random_password.password.result
   port     = lookup(var.DATABASE_INSTANCE, "port")
 

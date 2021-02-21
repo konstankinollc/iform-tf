@@ -77,33 +77,29 @@ resource "random_password" "admin_user" {
 }
 
 resource "random_password" "devise_secret_key" {
-  length           = 128
-  special          = true
-  override_special = "*+-./=?[]^_"
+  length           = 256
+  special          = false
   upper            = true
   lower            = true
 }
 
 resource "random_password" "secret_key_base" {
-  length           = 128
-  special          = true
-  override_special = "*+-./=?[]^_"
+  length           = 256
+  special          = false
   upper            = true
   lower            = true
 }
 
 resource "random_password" "stripe_key" {
-  length           = 128
-  special          = true
-  override_special = "*+-./=?[]^_"
+  length           = 256
+  special          = false
   upper            = true
   lower            = true
 }
 
 resource "random_password" "secret_token" {
-  length           = 128
-  special          = true
-  override_special = "*+-./=?[]^_"
+  length           = 256
+  special          = false
   upper            = true
   lower            = true
 }
