@@ -40,8 +40,7 @@ variable "PUBLIC_BASTION_KEY_PATH" {
 }
 variable "APP_SERVER_PUBLIC_EGRESS_PORTS" {
   type    = list(any)
-  default = [587, 5432, 2049, 443, 80, 22] # here 22 and 443 for iForm `git` fetch and system updates. Port 80 for `yum`
-  # SMTP, DB, EFS, HTTPS, SSH
+  default = [443, 80] # here 443 to fetch system updates. Port 80 for `yum`
 }
 variable "EC2_USER" {
   default = "ec2-user"
