@@ -7,7 +7,7 @@ resource "aws_iam_role" "assumerole" {
 
   name = "iform-assume-role"
 
-  # a.k.a CloudWatchAgentServerPolicy
+  # CloudWatchAgentServerPolicy
   assume_role_policy = <<EOF
 {
     "Version": "2012-10-17",

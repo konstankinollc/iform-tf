@@ -13,9 +13,8 @@ resource "aws_db_subnet_group" "private-subnet" {
 }
 
 resource "random_password" "password" {
-  length           = 16
-  special          = true
-  override_special = "*+-./=?[]^_"
+  length           = 32
+  special          = false
 }
 
 resource "random_id" "username" {
