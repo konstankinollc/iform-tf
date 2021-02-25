@@ -37,6 +37,17 @@ resource "aws_lb_target_group" "iform" {
   vpc_id      = aws_vpc.prod-vpc.id
   target_type = "instance"
 
+  health_check {
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    timeout             = "10"
+    port                = "80"
+    path                = "/"
+    protocol            = "HTTP"
+    interval            = 30
+    matcher             = "200-399"
+  }
+
   tags = {
     Name = "iForm Target Group"
   }
