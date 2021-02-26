@@ -71,9 +71,9 @@ resource "aws_kms_key" "this" {
 }
 
 resource "random_password" "admin_user" {
-  length           = 16
+  length           = 64
   special          = true
-  override_special = "*+-./=?[]^_"
+  override_special = "*()%#+-./=?[]^_"
 }
 
 resource "random_password" "devise_secret_key" {
